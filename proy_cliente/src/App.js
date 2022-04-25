@@ -1,40 +1,49 @@
 // import logo from './logo.svg';
-import { Alert, Card, DatePicker, Moment, TimePicker } from 'antd';
+import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom';
 import './App.css';
-
+import Admin from "./pages/admin";
+import SignIn from './pages/admin/SignIn';
+import Home from "./pages/Home";
+import Contact from "./pages/Contact"
+import React from 'react';
 function App() {
   return (
-    <div class="container">
-      <h1 className="">Componentes con Antd Design</h1>
-      <span className=''>Programación 3</span>
-      {/* Alerts */}
-      <div>
-        <Alert message='Success Text' type='success' />
-        <Alert message='Info Text' type='info' />
-        <Alert message='Warning Text' type='warning' />
-        <Alert message='Error Text' type='error' />
-      </div>
-      <div>
-        <label>Selecciona una fecha</label>
-        <DatePicker onChange={Date}></DatePicker>
-        <TimePicker></TimePicker>
-      </div>
-      <div>
-        <Card
-          size='small'
-          title='Tarjeta de presentación'
-          extra={<a href='#'>Ver más...</a>}
-          className='w-1/3 text-center'
-          style={{/*{width: 300}*/ }}>
-          <p>John Franco</p>
-          <p>Estudiante de Ing de Software</p>
-          <p><small>
-            jhon.1702011356@ucaldas.edu.co
-          </small></p>
-        </Card>
-      </div>
-    </div>
+    <React.Fragment>
+      <Admin></Admin>
+      <SignIn></SignIn>
+      <Home></Home>
+      <Contact></Contact>
+    </React.Fragment>
+    // <BrowserRouter>
+    //   <div className='my-5'>
+    //     <Link to='/' className='btn-lst'>Home</Link>
+    //     <Link to='/Contact' className='btn-lst'>Contacts</Link>
+    //     <Link to='/Users' className='btn-lst'>Users</Link>
+    //   </div>
+    //   <Routes>
+    //     <Route path='/' element={<Home />}></Route>
+    //     <Route path='Contact' element={<Contact />}></Route>
+    //     <Route path='Users' element={<Users />}></Route>
+    //     <Route path='*' element={<NotFound />}></Route>
+    //   </Routes>
+    // </BrowserRouter>
   );
 }
+
+// function NotFound(params) {
+//   return <h2 className='grid place-items-center h-screen font-bold text-xl'>Error 404: Component Not Found</h2>
+// }
+
+// function Home() {
+//   return <h2 className='grid place-items-center h-screen font-bold text-xl'>Component Home Works</h2>
+// }
+
+// function Contact() {
+//   return <h2 className='grid place-items-center h-screen font-bold text-xl'>Component Contact Works</h2>
+// }
+
+// function Users() {
+//   return <h2 className='grid place-items-center h-screen font-bold text-xl'>Component Users Works</h2>
+// }
 
 export default App;
