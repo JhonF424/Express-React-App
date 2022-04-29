@@ -2,26 +2,24 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import routes from './config/routes';
-import AdminHome from "./pages/admin"
 import React from 'react';
 
-function App() {
+export default function App() {
   return (
-    <React.Fragment>
-      <Router>
+    <Router>
+      <Routes>
         {routes.map((route, index) => (
-          <AdminSubroutesViews key={index} {...route}></AdminSubroutesViews>
+          <Route
+            key={index}
+            path={route.path}
+            element={
+              <route.layout>
+                <route.component></route.component>
+                <h2>Child Component</h2>
+              </route.layout>
+            } />
         ))}
-      </Router>
-    </React.Fragment>
-
+      </Routes>
+    </Router>
   );
 }
-
-function AdminSubroutesViews(route) {
-  console.log(route);
-  return true;
-}
-
-
-export default App;
