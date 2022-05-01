@@ -2,8 +2,9 @@ import LayoutAdmin from "../layouts/LayoutAdmin";
 import LayoutBasic from "../layouts/LayoutBasic";
 import AdminHome from "../pages/admin";
 import AdminSignIn from "../pages/admin/SignIn";
-import NotFound from "../layouts/NotFound";
+import NotFound from "../pages/NotFound";
 import Home from "../pages/Home.js";
+import Contact from "../pages/Contact"
 const adminRoutes = [
     {
         path: "/admin",
@@ -21,7 +22,8 @@ const adminRoutes = [
 const routeNotFound = [
     {
         path: "*",
-        layout: NotFound
+        layout: LayoutBasic,
+        component: NotFound
     }
 ]
 
@@ -30,6 +32,11 @@ const clientRoutes = [
         path: "/",
         layout: Home,
         component: LayoutBasic,
+    },
+    {
+        path: '/contacts',
+        layout: LayoutBasic,
+        component: Contact
     }
 ]
 

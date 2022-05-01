@@ -5,11 +5,8 @@ export default function LayoutAdmin(props) {
     const { Header, Content, Footer } = Layout;
     return (
         <Layout>
-            <h2>
-                Menu
-            </h2>
             <Layout>
-                <Header>
+                <Header className="bg-slate-600 text-emerald-500 text-2xl py-4">
                     Header
                 </Header>
                 <Content>
