@@ -6,7 +6,7 @@ export default function LayoutBasic(props) {
     return (
         <Layout>
             <Layout>
-                <Header className="bg-cyan-800 text-yellow-500 text-2xl py-4">
+                <Header className="">
                     Header
                 </Header>
                 <Content>
