@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import routes from './config/routes';
 import React from 'react';
 
@@ -15,7 +15,7 @@ export default function App() {
             element={
               <route.layout>
                 <route.component></route.component>
-                <h2>Child Component</h2>
+                
               </route.layout>
             } />
         ))}
