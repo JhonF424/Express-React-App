@@ -1,18 +1,25 @@
 import React from "react";
 import { Button } from "antd";
+import {
+    MenuUnfoldOutlined,
+    MenuFoldOutlined,
+    PoweroffOutlined,
+} from "@ant-design/icons"
 
-export default function Menu(props){
+export default function Menu(props) {
     const { menuCollapsed, setMenuCollapsed } = props;
 
     return (
-        <div className="bg-cyan-800 text text-2xl py-4 h-full w-full">
+        <div className="flex">
             <div className="">
-                <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)}>
-                    {/* <Icon type={menuCollapsed ? "menu-unfold" : "menu-fold"}></Icon> */}
+                <Button className="hover:bg-cyan-700 text-cyan-500 rounded-full pb-8" type="link" onClick={() => setMenuCollapsed(!menuCollapsed)}>
+                    {menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </Button>
             </div>
             <div className="">
-                <h3>Logout</h3>
+                <Button className="hover:bg-cyan-700 text-cyan-500 rounded-full pb-8" type="link" onClick={() => console.log("Log off")}>
+                    <PoweroffOutlined />
+                </Button>
             </div>
         </div>
     )

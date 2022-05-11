@@ -1,21 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from "antd";
-// import "./LayoutBasic.scss";
 import MenuTop from "../components/adminComponents/menu/MenuTop";
-export default function LayoutAdmin(props) {
-    const { children } = props;
+import MenuSider from "../components/adminComponents/menuSider";
+
+export default function LayoutAdmin() {
+    const [menuCollapsed, setMenuCollapsed] = useState(false);
     const { Header, Content, Footer } = Layout;
     return (
         <Layout>
+            <MenuSider menuCollapsed={menuCollapsed} />
             <Layout>
-                <Header className="">
-                    <MenuTop></MenuTop>
+                <Header>
+                    <MenuTop menuCollapsed={menuCollapsed} setMenuCollapsed={setMenuCollapsed} />
                 </Header>
-                <Content>
-                    {children}
+                <Content className="">
+                    <h1 className="">Rutas</h1>
                 </Content>
-                <Footer className="absolute inset-x-0 bottom-0 h-16">
-                    React Project 2022
+                <Footer className="mx-auto w-full fixed bottom-0">
+                    MERN UCaldas
                 </Footer>
             </Layout>
         </Layout>
