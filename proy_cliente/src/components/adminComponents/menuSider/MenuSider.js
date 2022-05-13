@@ -18,7 +18,7 @@ export default function MenuSlider(props) {
                 </Menu.Item>
                 <Menu.Item key="2">
                     <Link to={"/admin/menu-web"}>
-                        <HomeOutlined />
+                        <MenuOutlined />
                         <span className="">Menu Web</span>
                     </Link>
                 </Menu.Item>

@@ -22,6 +22,14 @@ const user = mongoose.Schema({
         type: Boolean,
         require: true,
     },
+    role: {
+        type: String,
+        require: true
+    },
+    avatar: {
+        type: String,
+        require: false
+    }
 });
 
 module.exports = mongoose.model('testCollection', user)
