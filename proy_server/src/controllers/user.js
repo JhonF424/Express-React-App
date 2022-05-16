@@ -17,8 +17,8 @@ function singUp(req, res) {
         res.status(404).send({ message: "Las contraseñas son obligatorias" });
     } else {
 
-        if (!password !== repeatPassword) {
-            res.status(404).send({ message: "Las contraseñas con coinciden" });
+        if (password !== repeatPassword) {
+            res.status(404).send({ message: "Las contraseñas no coinciden" });
 
         } else {
             bcrypt.hash(password, null, null, function (err, hash) {

@@ -3,7 +3,7 @@ import React from "react";
 import { Card, Row, Col } from "antd";
 export default function Admin() {
     return (
-        <div className="flex items-center">
+        <div className="flex items-center ml-60 my-20">
             <Row gutter={[16, 16]}>
                 <Card title="Admin Login" extra={<a href="/admin/login">Click Here!</a>} style={{ width: 300 }}>
                     <p>Card content</p>

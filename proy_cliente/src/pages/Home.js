@@ -6,7 +6,7 @@ export default function SignIn() {
             <h2 className="font-bold text-2xl flex items-center justify-center my-10">
                 Home page
             </h2>
-            <div className="">
+            <div className="ml-96">
                 <Row gutter={[16, 16]}>
                     <Card title="Contacts" extra={<a href="/contacts">Click Here!</a>} className="mx-2 w-40 ant-col-6 bg-slate-400">
                         <p>Card content</p>
