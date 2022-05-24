@@ -7,7 +7,7 @@ export default function SignIn() {
     const { Content } = Layout;
     const { TabPane } = Tabs;
     return (
-        <Layout>
+        <Layout className="flex flex-row">
             <Content className="ml-96">
                 <Tabs>
                     <TabPane tab={<span>Iniciar Sesión</span>} key="1">
