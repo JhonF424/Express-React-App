@@ -7,15 +7,15 @@ export default function SignIn() {
     const { Content } = Layout;
     const { TabPane } = Tabs;
     return (
-        <Layout className="flex flex-row">
-            <Content className="ml-96">
+        <Layout className="py-36 mx-auto">
+            <Content className="flex flex-col justify-center space-y-10 lg:space-y-0 lg:space-x-10 mx-auto lg:flex-row">
                 <Tabs>
-                    <TabPane tab={<span>Iniciar Sesión</span>} key="1">
+                    <TabPane className="" tab={<span>Iniciar Sesión</span>} key="1">
                         <Login />
                     </TabPane>
                 </Tabs>
                 <Tabs>
-                    <TabPane tab={<span>Registrar</span>} key="2">
+                    <TabPane className="" tab={<span>Registrar</span>} key="2">
                         <Register />
                     </TabPane>
                 </Tabs>

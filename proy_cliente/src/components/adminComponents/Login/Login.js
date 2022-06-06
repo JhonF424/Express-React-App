@@ -1,14 +1,14 @@
-import { UserOutlined, MailOutlined } from "@ant-design/icons";
+import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 import { Layout, Form, Input, Button, Checkbox } from "antd"
 
 export default function Login() {
     return (
-        <Layout>
-            <Form className="w-1/2">
+        <Layout className="mx-auto">
+            <Form className="">
                 <Form.Item>
                     <Input
                         prefix={
-                            <UserOutlined />
+                            <MailOutlined />
                         }
                         type="email"
                         name="email"
@@ -19,7 +19,7 @@ export default function Login() {
                 <Form.Item>
                     <Input
                         prefix={
-                            <UserOutlined />
+                            <LockOutlined />
                         }
                         type="password"
                         name="password"

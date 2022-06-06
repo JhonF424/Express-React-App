@@ -5,6 +5,7 @@ const { API_VERSION } = require("./config");
 const model = require('./src/models/user.model');
 const userRoutes = require("./src/routes/user");
 app.use(bodyParser.urlencoded({ extended: false }));
+// const cors = require("cors")
 app.use(bodyParser.json());
 
 // app.post('/create',(req, res)=> {
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 // }
 
 // )	
+
+// app.use(cors()); Esto crashea el proyecto
 
 // Endpoint del proyecto
 

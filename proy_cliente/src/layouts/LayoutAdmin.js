@@ -3,7 +3,7 @@ import { Layout } from "antd";
 import MenuTop from "../components/adminComponents/menu/MenuTop";
 import MenuSider from "../components/adminComponents/menuSider";
 import { GithubOutlined } from "@ant-design/icons"
-import SignIn from "./NotFound";
+import SignIn from "../pages/admin/signIn/SignIn";
 import { Route, Routes } from "react-router-dom";
 export default function LayoutAdmin(props) {
     const [menuCollapsed, setMenuCollapsed] = useState(false);
