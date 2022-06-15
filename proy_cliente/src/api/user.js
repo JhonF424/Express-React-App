@@ -11,7 +11,6 @@ export function signUpApi(data) {
         headers: {
             "Content-Type": "application/json"
         },
-        mode: 'no-cors'
     };
 
     return fetch(url, params).then((response) => {
