@@ -1,38 +1,70 @@
-import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
-import { Layout, Form, Input, Button, Checkbox } from "antd"
-
+import React, {useState} from "react";
+import { Form, Button, Input,notification } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { signIn } from "../../../api/user";
+import { ACCESS_TOKEN, REFRESH_TOKEN} from "../../../api/constants";
+import "./Login.scss";
 export default function Login() {
-    return (
-        <Layout className="mx-auto">
-            <Form className="">
-                <Form.Item>
-                    <Input
-                        prefix={
-                            <MailOutlined />
-                        }
-                        type="email"
-                        name="email"
-                        placeholder="Correo electrónico"
-                        className="my-2"
-                    />
-                </Form.Item>
-                <Form.Item>
-                    <Input
-                        prefix={
-                            <LockOutlined />
-                        }
-                        type="password"
-                        name="password"
-                        placeholder="contraseña"
-                        className="my-2"
-                    />
-                </Form.Item>
-                <Form.Item>
-                    <Button htmlType="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 mx-2 rounded">
-                        Ingresar
-                    </Button>
-                </Form.Item>
-            </Form>
-        </Layout>
-    )
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: ""
+  });
+
+  const changeForm = e => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value
+    });
+  };
+  const login = async e => {
+    e.preventDefault();
+    console.log(inputs)
+    const result = await signIn(inputs);
+
+    if (result.message) {
+      notification["error"]({
+        message: result.message
+      });
+    } else {
+      const { accessToken, refreshToken } = result;
+      localStorage.setItem(ACCESS_TOKEN, accessToken);
+      localStorage.setItem(REFRESH_TOKEN, refreshToken);
+      notification["success"]({
+        message: "Login correcto."
+      });
+      window.location.href = "/admin";
+    }
+    console.log(result);
+  };
+  return (
+    <Form className="login-form"  onChange={changeForm} >
+      <Form.Item>
+        <Input
+         prefix={
+          <UserOutlined />
+        }
+          type="email"
+          name="email"
+          placeholder="Correo electronico"
+          className="login-form__input"
+        />
+      </Form.Item>
+      <Form.Item>
+        <Input
+          prefix={
+            <UserOutlined />
+          }
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          className="login-form__input"
+        />
+      </Form.Item>
+      <Form.Item>
+        <Button htmlType="submit" onClick={login} className="login-form__button">
+          Entrar
+        </Button>
+      </Form.Item>
+    </Form>
+  );
 }

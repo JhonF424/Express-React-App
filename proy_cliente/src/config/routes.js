@@ -1,44 +1,72 @@
 import LayoutAdmin from "../layouts/LayoutAdmin";
 import LayoutBasic from "../layouts/LayoutBasic";
-import AdminHome from "../pages/admin";
-import AdminSignIn from "../pages/admin/signIn/SignIn";
-import NotFound from "../layouts/NotFound";
-import Home from "../pages/Home.js";
-import Contact from "../pages/Contact"
-const adminRoutes = [
-    {
-        path: "/admin",
-        layout: LayoutAdmin,
-        component: AdminHome,
-    },
-    {
-        path: "/admin/login",
-        layout: LayoutAdmin,
-        component: AdminSignIn,
-    },
 
+/* Importamos los pages */
+import AdminHome from "../pages/Admin";
+import AdminSignIn from "../pages/Admin/SignIn";
+import AdminUsers from "../pages/Admin/Users";
+import AdminSubjects from "../pages/Admin/Subjects";
+
+// Pages del Coordinador
+import CoordHome from '../pages/Coordinator/Coordinator'
+
+import Home from "../pages/Home";
+import NotFound from "../pages/NotFound/NotFound";
+import Contact from "../pages/Contact";
+
+const routesAdmin = [
+  {
+    path: "/admin",
+    layout: LayoutAdmin,
+    component: AdminHome,
+  },
+  {
+    path: "/admin/login",
+    layout: LayoutAdmin,
+    component: AdminSignIn,
+  },
+  {
+    path: "/admin/users",
+    layout: LayoutAdmin,
+    component: AdminUsers,
+  },
+  {
+    path: "/admin/subjects",
+    layout: LayoutAdmin,
+    component: AdminSubjects,
+  },
+];
+
+//Rutas para los coordinadores
+const routesCoord = [
+  {
+    path: "/coord",
+    layout: LayoutAdmin,
+    component: CoordHome,
+  },
+]
+
+/* Ruta home, notfound */
+const routesClient = [
+  {
+    path: "/",
+    layout: LayoutBasic,
+    component: Home,
+  },
+  {
+    path: "/contact",
+    layout: LayoutBasic,
+    component: Contact,
+  },
 ];
 
 const routeNotFound = [
-    {
-        path: "*",
-        layout: NotFound,
-    }
-]
+  {
+    path: "*",
+    layout: LayoutBasic,
+    component: NotFound,
+  },
+];
 
-const clientRoutes = [
-    {
-        path: "/",
-        layout: Home,
-        component: LayoutBasic,
-    },
-    {
-        path: '/contacts',
-        layout: LayoutBasic,
-        component: Contact
-    }
-]
-
-const routes = [...adminRoutes, ...clientRoutes, ...routeNotFound]
-
+const routes = [...routesAdmin, ...routesCoord, ...routesClient, ...routeNotFound];
 export default routes;
