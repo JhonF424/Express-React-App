@@ -27,8 +27,8 @@ export const MenuSider = (props) => {
             <span className="nav-text">Usuarios</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key="/coord">
-          <Link to={"/coord"}>
+        <Menu.Item key="/coord/subjects">
+          <Link to={"/coord/subjects"}>
             <TeamOutlined />
             <span className="nav-text">Asignaturas</span>
           </Link>

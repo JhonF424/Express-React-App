@@ -9,6 +9,7 @@ import AdminSubjects from "../pages/Admin/Subjects";
 
 // Pages del Coordinador
 import CoordHome from '../pages/Coordinator/Coordinator'
+import CoordSubjects from '../pages/Admin/Subjects/subjects/Subject'
 
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound/NotFound";
@@ -44,6 +45,11 @@ const routesCoord = [
     layout: LayoutAdmin,
     component: CoordHome,
   },
+  {
+    path: "/coord/subjects",
+    layout: LayoutAdmin,
+    component: CoordSubjects,
+  }
 ]
 
 /* Ruta home, notfound */
