@@ -106,9 +106,18 @@ const deleteSubject = (req, res) => {
     });
 };
 
+const filterByPIAAVersion = (req, res) => {
+    const piaaVersion = req.params.piaaV;
+
+    Subject.find({ 'piaa_version': piaaVersion })
+        .then((data) => res.json(data))
+        .catch((err) => res.json({ message: err }))
+}
+
 module.exports = {
     postSubject,
     getSubjects,
     updateSubject,
     deleteSubject,
+    filterByPIAAVersion
 };
