@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Select, Button, Row, Col, notification, DatePicker, Checkbox } from "antd";
-import { signUpAdmin } from "../../../api/user";
+import { newSubject } from "../../../api/subject";
 import { getAccessToken } from "../../../api/auth";
 import "./AddSubject.scss";
 
@@ -12,30 +12,30 @@ export default function EditSubject(props) {
         event.preventDefault();
 
         if (
-            !addSubject.department ||
-            !addSubject.academic_activity ||
-            !addSubject.number_credits ||
-            !addSubject.piaa_version ||
+            //!addSubject.department ||
+            !subjectData.academic_activity ||
+            !subjectData.number_credits ||
+            !subjectData.piaa_version ||
             //!addSubject.piaa_status ||
-            !addSubject.file_date ||
-            !addSubject.theory_hours ||
-            !addSubject.offsite_hours ||
-            !addSubject.hoursnon_attendance_reprovals ||
+            //!addSubject.file_date ||
+            !subjectData.theory_hours ||
+            !subjectData.offsite_hours ||
+            !subjectData.hoursnon_attendance_reprovals ||
             //!addSubject.last_chance ||
-            !addSubject.duration_semester ||
-            !addSubject.practical_hours ||
-            !addSubject.presential_teacher_hours ||
-            !addSubject.maximum_quotas ||
-            !addSubject.passing_score ||
-            !addSubject.weeks_duration
+            !subjectData.duration_semester ||
+            !subjectData.practical_hours ||
+            !subjectData.presential_teacher_hours ||
+            !subjectData.maximum_quotas ||
+            !subjectData.passing_score ||
+            !subjectData.weeks_duration
         ) {
             notification["error"]({
-                message: "Todos los campos son obligatorios.",
+                message: "Add Todos los campos son obligatorios.",
             });
         } else {
             const accesToken = getAccessToken();
 
-            signUpAdmin(accesToken, subjectData)
+            newSubject(accesToken, subjectData)
                 .then((response) => {
                     notification["success"]({
                         message: response,
@@ -76,7 +76,7 @@ const AddForm = (props) => {
                             placeholder="Departamento"
                             value={subjectData.department}
                             onChange={(e) =>
-                                setSubjectData({ ...subjectData, department: e.target.value })
+                                console.log(e.target.value)
                             }
                         />
                     </Form.Item>
@@ -136,31 +136,21 @@ const AddForm = (props) => {
                 </Col>
                 <Col span={12}>
                     <Form.Item>
-                        <Input
-                            placeholder="piaa_status"
-                            value={subjectData.piaa_status}
-                            onChange={(e) =>
-                                setSubjectData({ ...subjectData, piaa_status: e.target.value })
-                            }
-                        />
+                        <Select
+                            placeholder="Estado del PIAA"
+                            onChange={(e) => setSubjectData({ ...subjectData, role: e })}
+                            value={subjectData.role}
+                        >
+                            <Option value="active">Activo</Option>
+                            <Option value="inactive">Inactivo</Option>
+                        </Select>
                     </Form.Item>
                 </Col>
             </Row>
 
             <Row gutter={24}>
 
-                <Col span={12}>
-                    <Form.Item>
-                        <Select
-                            placeholder="piaa_status"
-                            onChange={(e) => setSubjectData({ ...subjectData, role: e })}
-                            value={subjectData.role}
-                        >
-                            <Option value="active">Administrador</Option>
-                            <Option value="inactive">Editor</Option>
-                        </Select>
-                    </Form.Item>
-                </Col>
+
             </Row>
 
             <Row gutter={24}>
@@ -266,7 +256,7 @@ const AddForm = (props) => {
                 <Col span={12}>
                     <Form.Item>
                         <Input
-                            placeholder="maximum_quotas"
+                            placeholder="Máximo de estudiantes"
                             value={subjectData.maximum_quotas}
                             onChange={(e) =>
                                 setSubjectData({ ...subjectData, maximum_quotas: e.target.value })

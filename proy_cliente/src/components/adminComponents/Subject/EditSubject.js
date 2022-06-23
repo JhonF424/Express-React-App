@@ -67,7 +67,7 @@ export default function EditSubjectForm(props) {
             !subjectUpdate.weeks_duration
         ) {
             notification["error"]({
-                message: "todos los valores son obligatorios.",
+                message: "Edit todos los valores son obligatorios.",
             });
             return;
         }
@@ -164,28 +164,13 @@ function EditForm(props) {
                 </Col>
                 <Col span={12}>
                     <Form.Item>
-                        <Input
-                            placeholder="piaa_status"
-                            value={subjectData.piaa_status}
-                            onChange={(e) =>
-                                setSubjectData({ ...subjectData, piaa_status: e.target.value })
-                            }
-                        />
-                    </Form.Item>
-                </Col>
-            </Row>
-
-            <Row gutter={24}>
-
-                <Col span={12}>
-                    <Form.Item>
                         <Select
                             placeholder="piaa_status"
                             onChange={(e) => setSubjectData({ ...subjectData, role: e })}
                             value={subjectData.role}
                         >
-                            <Option value="active">Administrador</Option>
-                            <Option value="inactive">Editor</Option>
+                            <Option value="active">Activo</Option>
+                            <Option value="inactive">Inactivo</Option>
                         </Select>
                     </Form.Item>
                 </Col>
@@ -293,7 +278,7 @@ function EditForm(props) {
                 <Col span={12}>
                     <Form.Item>
                         <Input
-                            placeholder="maximum_quotas"
+                            placeholder="Máximo de estudiantes"
                             value={subjectData.maximum_quotas}
                             onChange={(e) =>
                                 setSubjectData({ ...subjectData, maximum_quotas: e.target.value })

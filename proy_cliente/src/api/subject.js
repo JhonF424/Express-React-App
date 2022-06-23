@@ -1,6 +1,6 @@
 import { basePath, apiVersion } from "./config";
 
-export function subjectsUpApi(data) {
+export function newSubject(data) {
     const url = `${basePath}/${apiVersion}/subjects`;
     console.log(url);
     const params = {
@@ -56,7 +56,7 @@ export function getSubjects(token) {
         });
 }
 export function updateSubject(token, subjet, subjetId) {
-    const url = `${basePath}/${apiVersion}/updatesubjet/${subjetId}`;
+    const url = `${basePath}/${apiVersion}/update-subject/${subjetId}`;
 
     const params = {
         method: "PUT",
