@@ -9,7 +9,7 @@ import AdminSubjects from "../pages/Admin/Subjects";
 
 // Pages del Coordinador
 import CoordHome from '../pages/Coordinator/Coordinator'
-import CoordSubjects from '../pages/Admin/Subjects/subjects/Subject'
+import CoordSubjects from '../pages/Admin/Subjects'
 
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound/NotFound";

@@ -24,7 +24,7 @@ export default function AuthProvider(props) {
 }
 
 const checkUserLogin = (setUser) => {
-  console.log("Checking if Yaneth is login");
+
   const accessToken = getAccessToken();
   /* Validamos si el token es inválido o nulo */
   if (!accessToken) {

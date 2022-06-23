@@ -10,10 +10,6 @@ const getSubjects = (req, res) => {
 };
 
 
-
-const bcrypt = require("bcrypt-nodejs");
-const Subject = require("../models/subject");
-
 const postSubject = (req, res) => {
     const subject = new Subject();
     const {
@@ -74,32 +70,25 @@ const postSubject = (req, res) => {
 };
 
 async function updateSubject(req, res) {
-    let subjectData = req.body;
     const params = req.params;
+    let subjectData = req.body;
 
-    Subject.findByIdAndUpdate(
-        { _id: params.id },
-        subjectData,
-        (err, subjectUpdate) => {
-            err
-                ? res.status(500).send({ message: "Error del servidor." })
-                : !subjectUpdate
-                    ? res.status(404).send({ message: "No se encontro la asignatura que quiere actualizar." })
-                    : res
-                        .status(200)
-                        .send({ message: "Asignatura actualizada correctamente." });
-        }
-    );
+    Subject.findOneAndUpdate({ _id: params.id }, subjectData, (err, subject) => {
+        err
+            ? res.status(500).send({ message: "Error del servidor." })
+            : !subject
+                ? res.status(404).send({ message: "No se encontro la asignatura." })
+                : res.status(200).send({ message: "Usuario actualizado correctamente." });
+    });
 }
 
 const deleteSubject = (req, res) => {
     const { id } = req.params;
-
-    Subject.findByIdAndRemove(id, (err, SubjectDeleted) => {
+    Subject.findByIdAndDelete(id, (err, SubjectDeleted) => {
         err
             ? res.status(500).send({ message: "Error del servidor." })
             : !SubjectDeleted
-                ? res.status(404).send({ message: "Asignatura no encontrada." })
+                ? res.status(404).send({ message: "Asignatura no encontrado." })
                 : res
                     .status(200)
                     .send({ message: "La asinatura ha sido eliminada correctamente." });
@@ -107,11 +96,16 @@ const deleteSubject = (req, res) => {
 };
 
 const filterByPIAAVersion = (req, res) => {
-    const piaaVersion = req.params.piaaV;
 
-    Subject.find({ 'piaa_version': piaaVersion })
-        .then((data) => res.json(data))
-        .catch((err) => res.json({ message: err }))
+    const piaaVersion = req.params.piaa_version;
+    Subject.find({ piaa_version: piaaVersion })
+        .then((data) => {
+            if (data.length == 0) {
+                res.status(404).send({ message: "No se encontraron asignaturas con el filtro aplicado" })
+            } else {
+                res.status(200).send({ data })
+            }
+        })
 }
 
 module.exports = {

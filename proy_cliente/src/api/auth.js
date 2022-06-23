@@ -9,6 +9,13 @@ export function getAccessToken() {
   return expireToken(accessToken) ? null : accessToken;
 }
 
+export function getRol(accessToken) {
+  const decodedToken = jwtDecode(accessToken);
+  const rolDecoded = decodedToken.role;
+  console.log(rolDecoded);
+  return rolDecoded;
+}
+
 export function getRefreshToken() {
   const refreshToken = localStorage.getItem(REFRESH_TOKEN);
   if (!refreshToken || refreshToken === "null") return null;
